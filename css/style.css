@@ -1,32 +1,105 @@
-table{
-    border: 5px dashed black;
-    width: 60%;
+body {
+    background-color: #33414f;
+    font-family: "Roboto", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #2ecc71;
+    padding-top: 5rem;
+}
+header .new-game {
+    font-family: "Roboto", sans-serif;
+    font-size: 35px;
+    margin: auto;
+    display: block;
+}
+
+table.playground {
+    border: 10px dashed #2ecc71;
+    width: 50%;
     margin: 7px auto;
 }
 
-td{
-    height: 100px;
-    width: 20%;
+.playground td {
+    height: 6rem;
+    width: 10%;
     border: 2px solid black;
     cursor: pointer;
-    font-size: 70px;
+    font-size: 3rem;
     font-weight: bold;
     text-align: center;
     background-color: #34495e;
 }
-td:hover{
+
+.playground td:hover {
     background-color: cadetblue;
 }
-h1{
-    text-align: center;
+
+.nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: #fff;
 }
-footer{
-    padding: 0;
-    width: 60%;
+
+.nav ul {
+    line-height: 50px;
+}
+
+.nav ul li {
+    list-style: none;
+    display: inline-block;
+    border-right: 2px solid #2ecc71;
+}
+
+.nav ul li:last-child {
+    border-right: 0;
+}
+
+.nav ul li a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 20px;
+    color: #2ecc71;
+    margin: 0 10px;
+}
+
+.blocks {
+    width: 100%;
+    min-height: 100%;
+    height: 1000px;
+    overflow: hidden;
+}
+
+
+
+.blocks:nth-child(3) {
+    background: #fff991;
+}
+.blocks:nth-child(4) {
+    background: #0b2728;
+}
+.blocks:nth-child(5) {
+    background: #2ecc71;
+}
+.blocks:nth-child(6) {
+    background: #1da3ff;
+}
+.blocks:nth-child(7) {
+    background: #ffd1dc;
+}
+
+footer {
+    border: 1px solid #2ecc71;
+    padding: 25px;
     margin: 5px auto;
 }
-footer p{
+
+footer p {
+    color: #0b2728;
     text-align: justify;
-    font-style: italic;
-    font-size: 10px;
+    font-size: 2rem;
 }
