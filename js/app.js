@@ -2,56 +2,57 @@
 
 let player = "X";
 
-function selectPlayer() {
-    $('#chooseSymbol').change(function () {
-        let selectedSymbol = $('#chooseSymbol option:selected').val();
-        if (selectedSymbol === "X") {
-            player = "X";
-        } else {
-            player = "O";
-        }
-        $()
-    })
-}
+const App = {
+    eventHandler: function() {
+        $(document).on('change', '#chooseSymbol', function() {
+            App.selectPlayer($(this).val());
+        });
 
-function changePlayer(){
-    if(player === "X" ){
-        player = "O";
-    } else {
-        player = "X";
-    }
-}
-    $("td").on('click', function () {
-        if($(this).html() === ""){
-            $(this).css("color", randomColor()).html(player);
-            changePlayer();
-        }
-    });
+        $(document).on('click', '.nav ul li a', function () {
+           App.hashAnimate($(this));
+        });
 
+        $(document).on('click', 'td', function () {
+            App.randomColor($(this));
+            App.changePlayer();
+        });
+    },
 
-function randomColor(){
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    //rgb(255, 255, 255)
-    return "rgb(" + r + "," + g + "," + b + ")";
-}
+    // init: function(){},
 
-function hashAnimate () {
-    $('.link').on('click', function(e){
+    selectPlayer: function(symbol) {
+        player = symbol;
+    },
 
-        var hash = $(this).attr('href');
+    hashAnimate: function (link) {
+        var hash = link.attr('href');
         $('html,body').animate({
             scrollTop: $(hash).offset().top
         }, 800);
-
         return false;
-    });
-}
+    },
 
+    randomColor: function (letter) {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        //rgb(255, 255, 255)
 
+        letter.css('color', "rgb(" + r + "," + g + "," + b + ")").html(player);
 
-$( document ).ready(function() {
-    hashAnimate();
-    selectPlayer();
+    },
+
+    changePlayer: function () {
+        if (player === "X" ){
+            player = "O";
+        } else {
+            player = "X";
+        }
+    }
+};
+
+$(function() {
+    // App.init();
+    App.eventHandler();
 });
+
