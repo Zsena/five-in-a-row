@@ -12,6 +12,7 @@ td{
     font-size: 70px;
     font-weight: bold;
     text-align: center;
+    background-color: #34495e;
 }
 td:hover{
     background-color: cadetblue;

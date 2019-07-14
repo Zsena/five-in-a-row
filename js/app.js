@@ -2,21 +2,31 @@
 
 let player = "X";
 
+function selectPlayer() {
+    $('#chooseSymbol').change(function () {
+        let selectedSymbol = $('#chooseSymbol option:selected').val();
+        if (selectedSymbol === "X") {
+            player = "X";
+        } else {
+            player = "O";
+        }
+    })
+}
+
 function changePlayer(){
-  /*player változó értéke alapján beállítjuk a player változó értékét a másik játékos szimbólumára*/
     if(player === "X" ){
         player = "O";
     } else {
         player = "X";
     }
 }
+    $("td").on('click', function () {
+        if($(this).html() === ""){
+            $(this).css("color", randomColor()).html(player);
+            changePlayer();
+        }
+    });
 
-$("td").click(function(){
-    if($(this).html() === ""){
-        $(this).css("color", randomColor()).html(player);
-        changePlayer();
-    }
-});
 
 function randomColor(){
     let r = Math.floor(Math.random() * 256);
@@ -25,3 +35,8 @@ function randomColor(){
     //rgb(255, 255, 255)
     return "rgb(" + r + "," + g + "," + b + ")";
 }
+
+
+$( document ).ready(function() {
+    selectPlayer();
+});
